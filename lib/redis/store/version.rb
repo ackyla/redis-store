@@ -1,5 +1,5 @@
 class Redis
   class Store < self
-    VERSION = '1.1.4'
+    VERSION = '0.0.1'
   end
 end

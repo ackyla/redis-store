@@ -41,9 +41,14 @@ describe "Redis::Store::Factory" do
         store.instance_variable_get(:@client).password.must_equal("secret")
       end
 
-      it "allows/disable marshalling" do
-        store = Redis::Store::Factory.create :marshalling => false
-        store.instance_variable_get(:@marshalling).must_equal(false)
+      it "uses specified strategy" do
+        store = Redis::Store::Factory.create :strategy => :marshal
+        store.instance_variable_get(:@options)[:strategy].must_equal(:marshal)
+      end
+
+      it "allows/disable strategy" do
+        store = Redis::Store::Factory.create :strategy => false
+        store.instance_variable_get(:@options)[:strategy].must_equal(false)
       end
 
       it "should instantiate a Redis::DistributedStore store" do

@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe "Redis::Marshalling" do
+describe "Redis::Store::Strategy::Marshal" do
   def setup
-    @store = Redis::Store.new :marshalling => true
+    @store = Redis::Store.new :strategy => :marshal
     @rabbit = OpenStruct.new :name => "bunny"
     @white_rabbit = OpenStruct.new :color => "white"
     @store.set "rabbit", @rabbit

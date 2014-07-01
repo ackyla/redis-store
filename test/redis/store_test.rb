@@ -21,8 +21,8 @@ describe Redis::Store do
       let(:value) { 'value' }
       let(:options) { { :expire_after => 3600 } }
 
-      it 'must not double marshall' do
-        Marshal.expects(:dump).once
+      it 'must not double json' do
+        Oj.expects(:dump).once
 
         @store.set(key, value, options)
       end
@@ -35,8 +35,8 @@ describe Redis::Store do
       let(:value) { 'value' }
       let(:options) { { :expire_after => 3600 } }
 
-      it 'must not double marshall' do
-        Marshal.expects(:dump).once
+      it 'must not double json' do
+        Oj.expects(:dump).once
 
         @store.setnx(key, value, options)
       end
